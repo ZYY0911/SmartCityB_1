@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.smartcityb_1">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:name=".AppClient"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.FirstActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.AppHomeActivity" />
+        <activity android:name=".activity.NetActivity" />
+        <activity android:name=".activity.MotifPwdActivity" />
+        <activity android:name=".activity.MyInfosActivity" />
+        <activity android:name=".activity.OrderDetailActivity" />
+        <activity android:name=".activity.OrderActivity" />
+        <activity android:name=".activity.YjfkActivity" />
+        <activity android:name=".activity.HdActivity" />
+        <activity android:name=".activity.HdDetailsActivity" />
+        <activity android:name=".activity.YYLyDetailsActivity" />
+        <activity android:name=".activity.YYYLYActivity" />
+        <activity android:name=".activity.HjjcActivity" />
+        <activity android:name=".activity.ServiceFind" />
+        <activity android:name=".activity.AllServiceUrl"/>
+        <activity android:name=".activity.MotifImage"/>
+        <activity android:name=".activity.HospitalDetails"/>
+        <activity android:name=".activity.ONLineActivity"/>
+        <activity android:name=".activity.CreatNewCarActivity"/>
+        <activity android:name=".activity.KSChooseActivity"/>
+        <activity android:name=".activity.GhYuActivity"/>
+        <activity android:name=".activity.YyghSuccsssFulActivity"/>
+        <activity android:name=".activity.HouTheam"/>
+        <activity android:name=".activity.JzjcActivity"/>
+
+
+
+    </application>
+
+</manifest>

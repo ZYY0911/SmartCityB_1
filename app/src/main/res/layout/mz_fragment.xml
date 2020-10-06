@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/item_change"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_yuan"
+            android:gravity="center"
+            android:src="@mipmap/zuojiantou"
+            android:text="返回"
+            android:textColor="#000" />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="3"
+            android:background="@drawable/ss_et"
+            android:hint="搜索"
+            android:imeOptions="actionSearch"
+            android:paddingLeft="10dp"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/gird_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:horizontalSpacing="20dp"
+        android:numColumns="2"
+        android:padding="20dp"
+        android:verticalSpacing="20dp" />
+
+
+</LinearLayout>

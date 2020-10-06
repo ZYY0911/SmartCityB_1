@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:padding="7dp"
+            android:src="@mipmap/ic_close_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:text="评论"
+            android:textColor="#000"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="40dp">
+
+        <ImageView
+            android:id="@+id/iv_sned"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:padding="7dp"
+            android:src="@mipmap/ic_send_comment" />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="230dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+
+            android:background="@drawable/ss_et"
+            android:hint="留下你精彩的评论吧！"
+            android:imeOptions="actionSearch"
+            android:paddingLeft="10dp"
+            android:singleLine="true" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

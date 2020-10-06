@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <!--    2020-9-21周一，下午14:00，神经内科，依次排列，并提供预约按钮。-->
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:id="@+id/item_msg"
+        android:textColor="#000"
+        android:text="xxx"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/item_bt"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:text="预约" />
+
+
+</LinearLayout>
