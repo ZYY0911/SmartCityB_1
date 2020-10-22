@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
 
-    <include layout="@layout/head2" />
+    <include layout="@layout/head4" />
 
 
     <EditText

@@ -67,6 +67,7 @@ public class KSChooseActivity extends AppCompatActivity {
     private void setVolley() {
         VolleyTo volleyTo = new VolleyTo();
         volleyTo.setUrl("deptList")
+                .setJsonObject("hospitalId",hospitallist.getHospitalId())
                 .setVolleyLo(new VolleyLo() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
@@ -83,24 +84,17 @@ public class KSChooseActivity extends AppCompatActivity {
                 }).start();
     }
 
-    List<DepList> depListList;
     private void serListview() {
-        depListList = new ArrayList<>();
-        for (int i = 0; i < depLists.size(); i++) {
-            DepList depList = depLists.get(i);
-            if (depList.getHospitalId().equals(hospitallist.getHospitalId())) {
-                depListList.add(depList);
-            }
-        }
-        listView.setAdapter(new KsChooseAdapter(KSChooseActivity.this, depListList));
+
+        listView.setAdapter(new KsChooseAdapter(KSChooseActivity.this, depLists));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(KSChooseActivity.this, GhYuActivity.class);
                 intent.putExtra("info", hospitallist);
                 intent.putExtra("carInfos", carInfo);
-                Log.i("aaa", "onItemClick: "+depListList.get(position).getDeptName());
-                intent.putExtra("Ks", depListList.get(position));
+                Log.i("aaa", "onItemClick: "+depLists.get(position).getDeptName());
+                intent.putExtra("Ks", depLists.get(position));
                 startActivity(intent);
             }
         });

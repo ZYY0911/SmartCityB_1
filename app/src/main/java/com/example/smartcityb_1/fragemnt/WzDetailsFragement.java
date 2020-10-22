@@ -21,7 +21,7 @@ import androidx.fragment.app.Fragment;
  */
 public class WzDetailsFragement extends Fragment {
     private AppHomeActivity appHomeActivity;
-    private CarPail carPail;
+    public CarPail carPail;
     private TextView itemChange;
     private TextView title;
     private TextView title1;
@@ -33,9 +33,15 @@ public class WzDetailsFragement extends Fragment {
     private TextView tvMoney;
 
 
-    public WzDetailsFragement(AppHomeActivity appHomeActivity, CarPail carPail) {
+    public WzDetailsFragement(AppHomeActivity appHomeActivity) {
         this.appHomeActivity = appHomeActivity;
-        this.carPail = carPail;
+    }
+
+    public WzDetailsFragement() {
+    }
+
+    public static WzDetailsFragement newInstance(AppHomeActivity appHomeActivity) {
+        return new WzDetailsFragement(appHomeActivity);
     }
 
     @Nullable
@@ -52,7 +58,7 @@ public class WzDetailsFragement extends Fragment {
         itemChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appHomeActivity.replace(new WzcxFragment(appHomeActivity, carPail.getCarid()), false);
+                appHomeActivity.switchFragemnt(appHomeActivity.fragments.get(28)).commit();
             }
         });
         tvTime.setText(carPail.getTime());
@@ -61,6 +67,19 @@ public class WzDetailsFragement extends Fragment {
         tvTzsh.setText(carPail.getNotification());
         tvKf.setText(carPail.getDeductPoints() + "");
         tvMoney.setText(carPail.getCost() + "");
+
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (!hidden){
+            tvTime.setText(carPail.getTime());
+            tvLocation.setText(carPail.getPlace());
+            tvAction.setText(carPail.getDescription());
+            tvTzsh.setText(carPail.getNotification());
+            tvKf.setText(carPail.getDeductPoints() + "");
+            tvMoney.setText(carPail.getCost() + "");
+        }
     }
 
     private void initView() {

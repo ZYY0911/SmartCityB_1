@@ -15,7 +15,7 @@ import org.json.JSONObject;
  * @Create by 张瀛煜 on 2020/10/5 at 16:12
  */
 public class VolleyTo extends Thread {
-    private String Url = "http://" + AppClient.preferences.getString(AppClient.Ip, "192.168.155.106") + ":" +
+    private String Url = "http://" + AppClient.preferences.getString(AppClient.Ip, "118.190.26.201") + ":" +
             AppClient.preferences.getString(AppClient.PORT, "8080") + "/mobileA/";
     private boolean isLoop;
     private int time;

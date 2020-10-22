@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/item_dw"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="缴费单位"
+        android:textColor="#333"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/item_hh"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="缴费户号"
+        android:textColor="#333"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/item_hm"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="户名"
+        android:textColor="#333"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/item_address"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="住址信息"
+        android:textColor="#333"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/item_ye"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:text="余额"
+        android:textColor="#333"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/item_qf"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:text="欠费"
+        android:textColor="#333"
+        android:textSize="20sp" />
+
+</LinearLayout>

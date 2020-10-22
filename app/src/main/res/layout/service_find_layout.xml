@@ -8,6 +8,7 @@
     <include layout="@layout/head3" />
 
     <EditText
+        android:layout_marginTop="10dp"
         android:id="@+id/et_search"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -40,7 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="医护人员"
+            android:text="老人餐饮"
             android:textSize="20sp" />
     </RadioGroup>
 

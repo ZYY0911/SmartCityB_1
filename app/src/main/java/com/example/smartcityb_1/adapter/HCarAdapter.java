@@ -73,7 +73,7 @@ public class HCarAdapter extends ArrayAdapter<CarInfo> {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onUpDate2.upDate("2", position);
+                    onUpDate2.upDate("3", position);
                 }
             });
         } else {

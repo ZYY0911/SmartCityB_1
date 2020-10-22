@@ -1,6 +1,7 @@
 package com.example.smartcityb_1.fragemnt;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,16 +37,22 @@ import androidx.fragment.app.Fragment;
  */
 public class WzcxFragment extends Fragment {
     private AppHomeActivity appHomeActivity;
-    private String Cp;
+    public String Cp;
     private TextView itemChange;
     private TextView title;
     private TextView title1;
     private ListView listView;
     private Button btQuery;
 
-    public WzcxFragment(AppHomeActivity appHomeActivity, String Cp) {
+    public WzcxFragment(AppHomeActivity appHomeActivity) {
         this.appHomeActivity = appHomeActivity;
-        this.Cp = Cp;
+    }
+
+    public WzcxFragment() {
+    }
+
+    public static WzcxFragment newInstance(AppHomeActivity appHomeActivity) {
+        return new WzcxFragment(appHomeActivity);
     }
 
     @Nullable
@@ -61,12 +68,21 @@ public class WzcxFragment extends Fragment {
         setVolley_info();
     }
 
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        Log.i("aaa", "onHiddenChanged: " + hidden);
+        if (!hidden) {
+            setVolley_info();
+            Log.i("ddd", "onHiddenChanged: ");
+        }
+    }
+
     List<CarPail> carPails;
 
     private void setVolley_info() {
         VolleyTo volleyTo1 = new VolleyTo();
         volleyTo1.setUrl("getViolationsByCarId")
-                //{carid:"鲁A10001"}
                 .setJsonObject("carid", Cp)
                 .setVolleyLo(new VolleyLo() {
                     @Override
@@ -75,7 +91,6 @@ public class WzcxFragment extends Fragment {
                                 , new TypeToken<List<CarPail>>() {
                                 }.getType());
                         setListView();
-
                     }
 
                     @Override
@@ -108,13 +123,15 @@ public class WzcxFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                appHomeActivity.replace(new WzDetailsFragement(appHomeActivity, carPails.get(position)), false);
+                WzDetailsFragement wzDetailsFragement = (WzDetailsFragement) appHomeActivity.fragments.get(29);
+                wzDetailsFragement.carPail = carPails.get(position);
+                appHomeActivity.switchFragemnt(appHomeActivity.fragments.get(29)).commit();
             }
         });
         itemChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appHomeActivity.replace(new CarFragment(appHomeActivity), false);
+                appHomeActivity.switchFragemnt(appHomeActivity.fragments.get(24)).commit();
             }
         });
         title.setText("违章查询");

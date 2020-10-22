@@ -137,8 +137,14 @@ public class ONLineActivity extends AppCompatActivity {
                     intent.putExtra("date", getIntent().getSerializableExtra("date"));
                     intent.putExtra("carInfos", carInfos.get(index));
                     startActivity(intent);
-                } else {
+                } else if (name.equals("2")){
                     startActivity(new Intent(ONLineActivity.this, CreatNewCarActivity.class));
+                }else {
+                    Intent intent =  new Intent(ONLineActivity.this,CreatNewCarActivity.class);
+                    intent.putExtra("index",1);
+                    intent.putExtra("date",carInfos.get(index));
+                    startActivity(intent);
+
                 }
             }
         });

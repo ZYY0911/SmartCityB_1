@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/item_cp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="车牌号"
+        android:textColor="#666" />
+
+    <TextView
+        android:id="@+id/item_je"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="收费金额"
+        android:textColor="#666" />
+
+    <TextView
+        android:id="@+id/item_in"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.3"
+        android:gravity="center"
+        android:text="入场时间"
+        android:textColor="#666" />
+
+    <TextView
+        android:id="@+id/item_out"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.3"
+        android:gravity="center"
+        android:text="出场时间"
+        android:textColor="#666" />
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.2"
+        android:gravity="center"
+        android:text="停车场名称"
+        android:textColor="#666" />
+
+</LinearLayout>

@@ -23,6 +23,8 @@ import com.example.smartcityb_1.activity.AllServiceUrl;
 import com.example.smartcityb_1.activity.AppHomeActivity;
 import com.example.smartcityb_1.activity.HdActivity;
 import com.example.smartcityb_1.activity.HouTheam;
+import com.example.smartcityb_1.activity.ReadNewActivity;
+import com.example.smartcityb_1.activity.TrafficActivity;
 import com.example.smartcityb_1.adapter.HomeServiceAdapter;
 import com.example.smartcityb_1.adapter.HoutThemeAdapter;
 import com.example.smartcityb_1.bean.HomeImages;
@@ -63,9 +65,18 @@ public class HomeFragment extends Fragment {
     List<HomeImages> homeImages;
     List<HomeService> homeServices;
 
+    public HomeFragment() {
+    }
+
     public HomeFragment(AppHomeActivity appHomeActivity) {
         this.appHomeActivity = appHomeActivity;
     }
+
+
+    public static HomeFragment newInstance(AppHomeActivity appHomeActivity) {
+        return new HomeFragment(appHomeActivity);
+    }
+
 
     @Nullable
     @Override
@@ -81,8 +92,6 @@ public class HomeFragment extends Fragment {
         setVolley_Service();
         setVolley_Subject();
         setVolley_NewType();
-
-
     }
 
     List<NewsList> newsLists;
@@ -146,11 +155,13 @@ public class HomeFragment extends Fragment {
         for (String string : map.values()) {
             final TextView textView = new TextView(appHomeActivity);
             textView.setText(string);
-            textView.setTextColor(Color.BLACK);
+            textView.setTextColor(Color.parseColor("#333333"));
             textView.setTextSize(20);
             textView.setGravity(Gravity.CENTER);
+            textView.setBackgroundResource(R.drawable.text_no_line);
             if (j == 0) {
-                textView.setTextColor(Color.RED);
+                textView.setTextColor(getResources().getColor(R.color.colorPrimary));
+                textView.setBackgroundResource(R.drawable.text_line);
             }
             final int finalJ = j;
             textView.setOnClickListener(new View.OnClickListener() {
@@ -159,9 +170,11 @@ public class HomeFragment extends Fragment {
                     for (int i = 0; i < layoutNew.getChildCount(); i++) {
                         TextView textView = (TextView) layoutNew.getChildAt(i);
                         if (i == finalJ) {
-                            textView.setTextColor(Color.RED);
+                            textView.setTextColor(getResources().getColor(R.color.colorPrimary));
+                            textView.setBackgroundResource(R.drawable.text_line);
                         } else {
-                            textView.setTextColor(Color.BLACK);
+                            textView.setTextColor(Color.parseColor("#333333"));
+                            textView.setBackgroundResource(R.drawable.text_no_line);
                         }
                     }
                     String type = textView.getText().toString();
@@ -169,7 +182,7 @@ public class HomeFragment extends Fragment {
                 }
             });
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutParams.setMargins(20, 0, 20, 0);
+            layoutParams.setMargins(0, 0, 40, 0);
             textView.setLayoutParams(layoutParams);
             layoutNew.addView(textView);
             j++;
@@ -193,9 +206,11 @@ public class HomeFragment extends Fragment {
             }
         }
         newsLayout.removeAllViews();
+
         for (int j = 0; j < newsLists1.size(); j++) {
             View view = LayoutInflater.from(getContext()).inflate(R.layout.news_item, null);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            layoutParams.setMargins(10, 5, 10, 5);
             view.setLayoutParams(layoutParams);
             final ViewHolder holder = new ViewHolder();
             holder.itemImage = view.findViewById(R.id.item_image);
@@ -206,9 +221,9 @@ public class HomeFragment extends Fragment {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent intent = new Intent(appHomeActivity, ReadNewActivity.class);
-//                    intent.putExtra("info", newsList);
-//                    startActivity(intent);
+                    Intent intent = new Intent(getActivity(), ReadNewActivity.class);
+                    intent.putExtra("info", newsList);
+                    startActivity(intent);
                 }
             });
             VolleyImage volleyImage = new VolleyImage();
@@ -257,14 +272,7 @@ public class HomeFragment extends Fragment {
 
                         }
                     }).start();
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(appHomeActivity, HouTheam.class);
-                    intent.putExtra("info","新闻");
-                    startActivity(intent);
-                }
-            });
+
             newsLayout.addView(view);
         }
 
@@ -301,12 +309,12 @@ public class HomeFragment extends Fragment {
                         for (int i = 0; i < jsonArray.length; i++) {
                             strings.add(jsonArray[i].trim());
                         }
-                        girdTheme.setAdapter(new HoutThemeAdapter(appHomeActivity, strings));
+                        girdTheme.setAdapter(new HoutThemeAdapter(getActivity(), strings));
                         girdTheme.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Intent intent = new Intent(appHomeActivity, HouTheam.class);
-                                intent.putExtra("info","热门主题");
+                                Intent intent = new Intent(getActivity(), HouTheam.class);
+                                intent.putExtra("info", "热门主题");
                                 startActivity(intent);
                             }
                         });
@@ -323,14 +331,14 @@ public class HomeFragment extends Fragment {
     private void setVolley_Service() {
         VolleyTo volleyTo = new VolleyTo();
         volleyTo.setUrl("getServiceInOrder")
-                .setJsonObject("order", 1)
+                .setJsonObject("order", 2)
                 .setVolleyLo(new VolleyLo() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         homeServices = new Gson().fromJson(jsonObject.optJSONArray(Utils.Rows).toString()
                                 , new TypeToken<List<HomeService>>() {
                                 }.getType());
-                        HomeServiceAdapter adapter = new HomeServiceAdapter(appHomeActivity, homeServices);
+                        HomeServiceAdapter adapter = new HomeServiceAdapter(getActivity(), homeServices);
                         girdService.setAdapter(adapter);
                         adapter.setOnUpDate(new OnUpDate2() {
                             @Override
@@ -338,15 +346,28 @@ public class HomeFragment extends Fragment {
                                 if (name.equals("活动")) {
                                     startActivity(new Intent(appHomeActivity, HdActivity.class));
                                 } else if (name.equals("违章查询")) {
-                                    appHomeActivity.replace(new CarFragment(appHomeActivity), false);
+                                    appHomeActivity.switchFragemnt(appHomeActivity.fragments.get(24)).commit();
                                 } else if (name.equals("门诊预约")) {
-                                    appHomeActivity.replace(new MzFragment(appHomeActivity), false);
+                                    appHomeActivity.switchFragemnt(appHomeActivity.fragments.get(23)).commit();
+                                } else if (name.equals("更多服务")) {
+                                    appHomeActivity.switchFragemnt(appHomeActivity.fragments.get(25)).commit();
+                                } else if (name.equals("城市巴士")) {
+                                    appHomeActivity.switchFragemnt(appHomeActivity.fragments.get(3)).commit();
+                                } else if (name.equals("停车场")) {
+                                    appHomeActivity.switchFragemnt(appHomeActivity.fragments.get(1)).commit();
+                                } else if (name.equals("生活缴费")) {
+                                    appHomeActivity.switchFragemnt(appHomeActivity.fragments.get(5)).commit();
+                                } else if (name.equals("地铁查询")) {
+                                    startActivity(new Intent(getActivity(), TrafficActivity.class));
+                                } else if (name.equals("新闻中心")) {
+                                    appHomeActivity.switchFragemnt(appHomeActivity.fragments.get(26)).commit();
                                 } else {
                                     Intent intent = new Intent(appHomeActivity, AllServiceUrl.class);
-                                    intent.putExtra("infos", homeServices.get(index).getUrl());
+                                    intent.putExtra("infos", homeServices.get(index).getId());
                                     intent.putExtra("date", name);
                                     startActivity(intent);
                                 }
+
                             }
                         });
                     }
@@ -382,13 +403,13 @@ public class HomeFragment extends Fragment {
     private void setViewFlipper() {
         imageViews = new ArrayList<>();
         for (int i = 0; i < homeImages.size(); i++) {
-            HomeImages homeImage = homeImages.get(i);
+            final HomeImages homeImage = homeImages.get(i);
             VolleyImage volleyImage = new VolleyImage();
             volleyImage.setUrl(homeImage.getPath())
                     .setVolleyLoImage(new VolleyLoImage() {
                         @Override
                         public void onResponse(Bitmap bitmap) {
-                            ImageView imageView = new ImageView(appHomeActivity);
+                            ImageView imageView = new ImageView(getActivity());
                             imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                             imageView.setImageBitmap(bitmap);
                             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -402,8 +423,8 @@ public class HomeFragment extends Fragment {
                             imageView.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Intent intent = new Intent(appHomeActivity, HouTheam.class);
-                                    intent.putExtra("info","新闻");
+                                    Intent intent = new Intent(getActivity(), ReadNewActivity.class);
+                                    intent.putExtra("id", homeImage.getNewid());
                                     startActivity(intent);
                                 }
                             });

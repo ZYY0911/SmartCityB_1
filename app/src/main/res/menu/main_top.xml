@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/my_my_class"
+        android:enabled="true"
+        android:icon="@mipmap/wodkc"
+        android:title="我的课程" />
+    <item
+        android:id="@+id/my_all_class"
+        android:enabled="true"
+        android:icon="@mipmap/sykc"
+        android:title="所有课程" />
+
+</menu>

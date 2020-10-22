@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/head2" />
+    <include layout="@layout/head4" />
 
     <LinearLayout
         android:id="@+id/lauyout_photo"

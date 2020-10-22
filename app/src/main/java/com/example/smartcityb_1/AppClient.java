@@ -27,10 +27,12 @@ public class AppClient extends Application {
     public static String username = "abc";
     private static List<AppCompatActivity> appCompatActivities = new ArrayList<>();
     private static List<AppCompatActivity> appCompatActivities2 = new ArrayList<>();
+    public static String name, tel, address, time;
 
     public static void add(AppCompatActivity appCompatActivity) {
         appCompatActivities.add(appCompatActivity);
     }
+
     public static void add2(AppCompatActivity appCompatActivity) {
         appCompatActivities2.add(appCompatActivity);
     }
@@ -43,6 +45,7 @@ public class AppClient extends Application {
             }
         }
     }
+
     public static void finallAll() {
         for (int i = 0; i < appCompatActivities.size(); i++) {
             AppCompatActivity appCompatActivity = appCompatActivities.get(i);

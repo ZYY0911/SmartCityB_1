@@ -1,6 +1,7 @@
 package com.example.smartcityb_1.fragemnt;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,9 +44,18 @@ public class MzFragment extends Fragment {
     private EditText etSearch;
     private GridView girdView;
 
+    public MzFragment() {
+
+    }
+
     public MzFragment(AppHomeActivity appHomeActivity) {
         this.appHomeActivity = appHomeActivity;
     }
+
+    public static MzFragment newInstance(AppHomeActivity appHomeActivity) {
+        return new MzFragment(appHomeActivity);
+    }
+
 
     @Nullable
     @Override
@@ -59,7 +70,7 @@ public class MzFragment extends Fragment {
         itemChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appHomeActivity.replace(new HomeFragment(appHomeActivity), true);
+                appHomeActivity.backOnClick();
             }
         });
         setVolley();
@@ -71,7 +82,7 @@ public class MzFragment extends Fragment {
                         case KeyEvent.ACTION_UP:
                             String msg = etSearch.getText().toString();
                             if (msg.equals("")) {
-                                girdView.setAdapter(new HospitalAdapter(appHomeActivity, hospitallists));
+                                girdView.setAdapter(new HospitalAdapter(getActivity(), hospitallists));
 
                             } else {
                                 List<Hospitallist> hospitallistList = new ArrayList<>();
@@ -81,7 +92,7 @@ public class MzFragment extends Fragment {
                                         hospitallistList.add(hospitallist);
                                     }
                                 }
-                                girdView.setAdapter(new HospitalAdapter(appHomeActivity, hospitallistList));
+                                girdView.setAdapter(new HospitalAdapter(getActivity(), hospitallistList));
                             }
                             return true;
                         default:
@@ -91,10 +102,11 @@ public class MzFragment extends Fragment {
                 return false;
             }
         });
+
         girdView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(appHomeActivity, HospitalDetails.class);
+                Intent intent = new Intent(getActivity(), HospitalDetails.class);
                 intent.putExtra("index", hospitallists.get(position));
                 startActivity(intent);
             }
@@ -112,7 +124,7 @@ public class MzFragment extends Fragment {
                         hospitallists = new Gson().fromJson(jsonObject.optJSONArray(Utils.Rows).toString()
                                 , new TypeToken<List<Hospitallist>>() {
                                 }.getType());
-                        girdView.setAdapter(new HospitalAdapter(appHomeActivity, hospitallists));
+                        girdView.setAdapter(new HospitalAdapter(getActivity(), hospitallists));
                     }
 
                     @Override

@@ -36,8 +36,7 @@ public class AllServiceUrl extends AppCompatActivity {
         });
         url = getIntent().getStringExtra("infos");
         webView.loadUrl(url);
-
-
+        
     }
 
     private void initView() {

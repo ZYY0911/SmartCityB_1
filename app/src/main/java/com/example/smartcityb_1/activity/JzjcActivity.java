@@ -1,7 +1,6 @@
 package com.example.smartcityb_1.activity;
 
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,7 +25,6 @@ import java.util.List;
 import java.util.Random;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
@@ -69,9 +67,11 @@ public class JzjcActivity extends AppCompatActivity {
         barEntries.add(new BarEntry(2, 42));
         barEntries.add(new BarEntry(3, 20));
         BarDataSet dataSet = new BarDataSet(barEntries, "");
-
-        dataSet.setColors(new int[]{Color.parseColor("#196F44"), Color.RED, Color.YELLOW
-                , Color.GREEN, android.R.color.holo_blue_dark});
+        List<Integer> integers = new ArrayList<>();
+        for (int i = 0; i < barEntries.size(); i++) {
+            integers.add(getColor());
+        }
+        dataSet.setColors(integers);
         dataSet.setBarBorderWidth(0.3f);
         BarData data = new BarData(dataSet);
         barChart.setData(data);
@@ -84,13 +84,16 @@ public class JzjcActivity extends AppCompatActivity {
         barChart.getLegend().setEnabled(false);
     }
 
+    private int getColor() {
+        return Color.rgb(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+    }
 
     private void setPicChart() {
         List<PieEntry> pieEntries = new ArrayList<>();
         pieEntries.add(new PieEntry(70.5f, "已入住"));
         pieEntries.add(new PieEntry(29.5f, "未入住"));
         PieDataSet pieDataSet = new PieDataSet(pieEntries, "");
-        pieDataSet.setColors(new int[]{Color.parseColor("#196F44"), Color.parseColor("#629755")});
+        pieDataSet.setColors(new int[]{getColor(), getColor()});
         pieDataSet.setValueTextSize(12);
         pieDataSet.setValueFormatter(new PercentFormatter());
         PieData data = new PieData(pieDataSet);

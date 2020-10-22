@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_layout"
+    android:layout_width="20dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="28dp"
+        android:id="@+id/item_bg"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/details_1" />
+
+    <TextView
+        android:id="@+id/item_station"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center|top"
+        android:text="XXXX"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+
+</LinearLayout>

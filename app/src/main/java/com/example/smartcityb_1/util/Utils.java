@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class Utils {
     public static final String Rows = "ROWS_DETAIL";
+    public static final String Row = "ROWS_DETAIL";
     public static void showDialog(String msg, Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("提示");

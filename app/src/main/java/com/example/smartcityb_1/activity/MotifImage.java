@@ -56,7 +56,7 @@ public class MotifImage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.putExtra("date", ivPhoto.getTag().toString());
+                intent.putExtra("date", ivPhoto.getTag()==null?"user" + (infos + 1) + ".png":ivPhoto.getTag().toString());
                 intent.putExtra("index", index);
                 setResult(ivPhoto.getTag()==null?RESULT_CANCELED:RESULT_OK, intent);
                 finish();

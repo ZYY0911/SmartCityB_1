@@ -11,6 +11,7 @@
         android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
         android:gravity="center">
 
         <TextView
@@ -20,24 +21,21 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="智慧城市"
-            android:textColor="#2196F3"
+            android:textColor="#fff"
             android:textSize="20sp" />
 
         <EditText
-            android:hint="搜索新闻"
             android:id="@+id/et_search"
             android:layout_width="0dp"
             android:layout_height="30dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="3"
-            android:singleLine="true"
             android:background="@drawable/ss_et"
+            android:hint="搜索新闻"
             android:imeOptions="actionSearch"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            android:singleLine="true" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -51,10 +49,8 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="88dp"
-        app:menu="@menu/main_bottom"/>
-
-
-
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/main_bottom" />
 
 
 </LinearLayout>

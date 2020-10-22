@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.smartcityb_1.R;
+import com.example.smartcityb_1.activity.AppHomeActivity;
 import com.example.smartcityb_1.activity.HjjcActivity;
 import com.example.smartcityb_1.activity.JzjcActivity;
 import com.example.smartcityb_1.activity.ServiceFind;
@@ -26,6 +27,19 @@ public class YlFragment extends Fragment {
     private LinearLayout layoutHjjc;
     private LinearLayout layoutFwcx;
     private LinearLayout layoutJjjc;
+    private AppHomeActivity appHomeActivity;
+
+    public YlFragment(AppHomeActivity appHomeActivity) {
+        this.appHomeActivity = appHomeActivity;
+    }
+
+
+    public static YlFragment newInstance(AppHomeActivity appHomeActivity) {
+        return new YlFragment(appHomeActivity);
+    }
+
+    public YlFragment() {
+    }
 
     @Nullable
     @Override
@@ -40,25 +54,25 @@ public class YlFragment extends Fragment {
         layoutYyyl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), YYYLYActivity.class));
+                startActivity(new Intent(getActivity(), YYYLYActivity.class));
             }
         });
         layoutHjjc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), HjjcActivity.class));
+                startActivity(new Intent(getActivity(), HjjcActivity.class));
             }
         });
         layoutFwcx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), ServiceFind.class));
+                startActivity(new Intent(getActivity(), ServiceFind.class));
             }
         });
         layoutJjjc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), JzjcActivity.class));
+                startActivity(new Intent(getActivity(), JzjcActivity.class));
             }
         });
     }

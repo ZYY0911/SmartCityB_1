@@ -29,7 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * @Create by 张瀛煜 on 2020/10/5 at 20:22
  */
 public class MyInfosActivity extends AppCompatActivity {
-    private TextView itemChange;
+    private ImageView itemChange;
     private TextView title;
     private TextView title1;
     private LinearLayout lauyoutPhoto;

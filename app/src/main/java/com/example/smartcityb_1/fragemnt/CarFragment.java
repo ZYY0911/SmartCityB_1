@@ -50,6 +50,13 @@ public class CarFragment extends Fragment {
         this.appHomeActivity = appHomeActivity;
     }
 
+    public CarFragment() {
+    }
+
+    public static CarFragment newInstance(AppHomeActivity appHomeActivity) {
+        return new CarFragment(appHomeActivity);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -66,7 +73,7 @@ public class CarFragment extends Fragment {
         itemChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appHomeActivity.replace(new HomeFragment(appHomeActivity),true);
+                appHomeActivity.backOnClick();
             }
         });
     }
@@ -86,7 +93,7 @@ public class CarFragment extends Fragment {
                         for (int i = 0; i < carTypes.size(); i++) {
                             strings.add(carTypes.get(i).getName());
                         }
-                        carType.setAdapter(new ArrayAdapter<String>(appHomeActivity, android.R.layout.simple_list_item_1, strings));
+                        carType.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, strings));
                     }
 
                     @Override
@@ -99,29 +106,22 @@ public class CarFragment extends Fragment {
             public void onClick(View v) {
                 String cp = carNum.getSelectedItem().toString() + etNum.getText().toString().toUpperCase();
                 if (cp.length() == 7) {
-//                    VolleyTo volleyTo1 = new VolleyTo();
-//                    volleyTo1.setUrl("getViolationsByCarId")
-//                            //{carid:"鲁A10001"}
-//                            .setJsonObject("carid",cp)
-//                            .setVolleyLo(new VolleyLo() {
-//                                @Override
-//                                public void onResponse(JSONObject jsonObject) {
-//
-//
-//                                }
-//
-//                                @Override
-//                                public void onErrorResponse(VolleyError volleyError) {
-//
-//                                }
-//                            }).start();
-                    appHomeActivity.replace(new WzcxFragment(appHomeActivity,cp),false);
+                    WzcxFragment wzcxFragment = (WzcxFragment) appHomeActivity.fragments.get(28);
+                    wzcxFragment.Cp = cp;
+                    appHomeActivity.switchFragemnt(appHomeActivity.fragments.get(28)).commit();
                 } else {
                     Utils.showDialog("车牌号不正确", appHomeActivity);
                     return;
                 }
             }
         });
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (hidden) {
+            etNum.setText("");
+        }
     }
 
     private void initView() {

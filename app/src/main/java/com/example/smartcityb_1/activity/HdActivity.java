@@ -45,7 +45,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * @Create by 张瀛煜 on 2020/10/5 at 21:26
  */
 public class HdActivity extends AppCompatActivity {
-    private TextView itemChange;
+    private ImageView itemChange;
     private TextView title;
     private TextView title1;
     private ViewFlipper viewFlipper;
@@ -85,9 +85,13 @@ public class HdActivity extends AppCompatActivity {
                             textView.setTextColor(Color.BLACK);
                             textView.setTextSize(20);
                             textView.setGravity(Gravity.CENTER);
+                            textView.setBackgroundResource(R.drawable.text_no_line);
                             if (i == 0) {
-                                textView.setTextColor(Color.RED);
+                                textView.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                textView.setBackgroundResource(R.drawable.text_line);
                             }
+                            textView.setPadding(10,0,10,0);
+
                             final int finalJ = i;
                             textView.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -95,9 +99,11 @@ public class HdActivity extends AppCompatActivity {
                                     for (int i = 0; i < layoutNew.getChildCount(); i++) {
                                         TextView textView = (TextView) layoutNew.getChildAt(i);
                                         if (i == finalJ) {
-                                            textView.setTextColor(Color.RED);
+                                            textView.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                            textView.setBackgroundResource(R.drawable.text_line);
                                         } else {
                                             textView.setTextColor(Color.BLACK);
+                                            textView.setBackgroundResource(R.drawable.text_no_line);
                                         }
                                     }
                                     String type = textView.getText().toString();
@@ -105,7 +111,7 @@ public class HdActivity extends AppCompatActivity {
                                 }
                             });
                             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                            layoutParams.setMargins(20, 0, 20, 0);
+                            layoutParams.setMargins(40, 0, 40, 0);
                             textView.setLayoutParams(layoutParams);
                             layoutNew.addView(textView);
                         }

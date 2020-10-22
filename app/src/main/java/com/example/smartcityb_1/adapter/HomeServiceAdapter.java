@@ -13,9 +13,16 @@ import android.widget.TextView;
 import com.android.volley.VolleyError;
 import com.example.smartcityb_1.R;
 import com.example.smartcityb_1.bean.HomeService;
+import com.example.smartcityb_1.bean.HomeService2;
 import com.example.smartcityb_1.net.VolleyImage;
+import com.example.smartcityb_1.net.VolleyLo;
 import com.example.smartcityb_1.net.VolleyLoImage;
+import com.example.smartcityb_1.net.VolleyTo;
 import com.example.smartcityb_1.util.OnUpDate2;
+import com.example.smartcityb_1.util.Utils;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -68,12 +75,33 @@ public class HomeServiceAdapter extends ArrayAdapter<HomeService> {
             });
         }else {
             final HomeService homeService = getItem(position);
-            VolleyImage volleyImage = new VolleyImage();
-            volleyImage.setUrl(homeService.getImage())
-                    .setVolleyLoImage(new VolleyLoImage() {
+            VolleyTo volleyTo = new VolleyTo();
+            volleyTo.setUrl("service_info")
+                    .setJsonObject("serviceid", homeService.getId())
+                    .setVolleyLo(new VolleyLo() {
                         @Override
-                        public void onResponse(Bitmap bitmap) {
-                            holder.itemPhoto.setImageBitmap(bitmap);
+                        public void onResponse(JSONObject jsonObject) {
+                            final HomeService2 service = new Gson().fromJson(jsonObject.optJSONArray(Utils.Rows).optJSONObject(0).toString(), HomeService2.class);
+                            holder.itemName.setText(service.getServiceName());
+                            holder.itemLayout.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    onUpDate.upDate(service.getServiceName(),position);
+                                }
+                            });
+                            VolleyImage volleyImage = new VolleyImage();
+                            volleyImage.setUrl(service.getIcon())
+                                    .setVolleyLoImage(new VolleyLoImage() {
+                                        @Override
+                                        public void onResponse(Bitmap bitmap) {
+                                            holder.itemPhoto.setImageBitmap(bitmap);
+                                        }
+
+                                        @Override
+                                        public void onErrorResponse(VolleyError volleyError) {
+
+                                        }
+                                    }).start();
                         }
 
                         @Override
@@ -81,13 +109,6 @@ public class HomeServiceAdapter extends ArrayAdapter<HomeService> {
 
                         }
                     }).start();
-            holder.itemName.setText(homeService.getName());
-            holder.itemLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onUpDate.upDate(homeService.getName(), position);
-                }
-            });
         }
         return convertView;
     }

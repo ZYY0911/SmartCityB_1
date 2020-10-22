@@ -4,4 +4,8 @@
         <item>鲁</item>
         <item>京</item>
     </string-array>
+    <string-array name="hh">
+        <item>水费</item>
+        <item>电费</item>
+    </string-array>
 </resources>

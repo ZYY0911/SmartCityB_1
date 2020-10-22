@@ -78,7 +78,7 @@ public class HjjcActivity extends AppCompatActivity {
         //户外活动时间：1h22min
         //体重：70kg
         tvXl.setText("心率："+random.nextInt(100) + "");
-        tvTw.setText("体温："+random.nextInt(37) + random.nextFloat() + "℃");
+        tvTw.setText("体温："+random.nextInt(37)+"℃");
         tvXy.setText("血压："+random.nextInt(300) + "Pa");
         tvDyl.setText("运动量："+random.nextInt(5000) + "");
         tvHdsj.setText("户外活动时间："+random.nextInt(2) + "h" + random.nextInt(61) + "min");

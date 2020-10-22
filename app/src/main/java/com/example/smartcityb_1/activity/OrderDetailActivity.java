@@ -30,7 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public class OrderDetailActivity extends AppCompatActivity {
     OrderTitle orderTitle;
-    private TextView itemChange;
+    private ImageView itemChange;
     private TextView title;
     private TextView title1;
     private ListView listView;

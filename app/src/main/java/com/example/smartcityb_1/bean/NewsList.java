@@ -2,12 +2,13 @@ package com.example.smartcityb_1.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * @Login Name win10
  * @Create by 张瀛煜 on 2020/10/5 at 19:23
  */
-public class NewsList  {
-
+public class NewsList  implements Serializable {
     /**
      * newsid : 1
      * newsType : 时政
@@ -72,4 +73,15 @@ public class NewsList  {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    /**
+     * newsid : 1
+     * newsType : 时政
+     * picture : http://localhost:8080/mobileA/images/1.jpg
+     * abstract : 10月1日，中华人民共和国成立71周年，天安门广场将举行2020年国庆升旗仪式。今年国庆的升旗仪式，有什么特殊的意义？又会有哪些新亮点？戳直播，看五星红旗在天安门广场冉冉升起，一起祝福祖国！
+     * title : 天安门广场举行国庆升旗仪式
+     * url : http://mbd.baidu.com/webpage?type=live&action=liveshow&source=search&room_id=3941827688
+     */
+
+
 }

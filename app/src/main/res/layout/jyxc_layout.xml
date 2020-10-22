@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/head2" />
+
+
+    <EditText
+        android:id="@+id/et_msg"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="20dp"
+        android:background="@android:drawable/alert_light_frame"
+        android:gravity="top"
+        android:hint="请输入反馈内容"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:text="上传图片"
+        android:textSize="13sp" />
+
+
+    <GridView
+        android:id="@+id/gird_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:horizontalSpacing="20dp"
+        android:numColumns="3"
+        android:padding="5dp"
+        android:verticalSpacing="20dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+    <Button
+        android:id="@+id/bt_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#f00"
+        android:text="提交"
+        android:textColor="#fff"
+        android:textSize="20sp" />
+</LinearLayout>

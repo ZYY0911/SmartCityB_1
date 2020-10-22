@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.FirstActivity">
+        <activity android:name=".activity.GlideActivity1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,19 +32,40 @@
         <activity android:name=".activity.YYYLYActivity" />
         <activity android:name=".activity.HjjcActivity" />
         <activity android:name=".activity.ServiceFind" />
-        <activity android:name=".activity.AllServiceUrl"/>
-        <activity android:name=".activity.MotifImage"/>
-        <activity android:name=".activity.HospitalDetails"/>
-        <activity android:name=".activity.ONLineActivity"/>
-        <activity android:name=".activity.CreatNewCarActivity"/>
-        <activity android:name=".activity.KSChooseActivity"/>
-        <activity android:name=".activity.GhYuActivity"/>
-        <activity android:name=".activity.YyghSuccsssFulActivity"/>
-        <activity android:name=".activity.HouTheam"/>
-        <activity android:name=".activity.JzjcActivity"/>
+        <activity android:name=".activity.AllServiceUrl" />
+        <activity android:name=".activity.MotifImage" />
+        <activity android:name=".activity.HospitalDetails" />
+        <activity android:name=".activity.ONLineActivity" />
+        <activity android:name=".activity.CreatNewCarActivity" />
+        <activity android:name=".activity.KSChooseActivity" />
+        <activity android:name=".activity.GhYuActivity" />
+        <activity android:name=".activity.YyghSuccsssFulActivity" />
+        <activity android:name=".activity.HouTheam" />
+        <activity android:name=".activity.JzjcActivity">
 
 
+        </activity>
 
+
+        <activity android:name=".activity.AllTrafficActivity" />
+        <activity android:name=".activity.ReadNewActivity" />
+        <activity android:name=".activity.TrafficActivity" />
+        <activity android:name=".activity.TrafficDetailsActivity" />
+        <activity android:name=".activity.TccDetails" />
+        <activity android:name=".activity.TccHistoryActivity" />
+
+
+        <activity android:name=".activity.MotifInfoActivity" />
+        <activity android:name=".activity.BusDetailsActivity3" />
+        <activity android:name=".activity.BusDetailsActivity" />
+        <activity android:name=".activity.BusDetailsActivity2" />
+        <activity android:name=".activity.BusDetailsActivity4" />
+        <activity android:name=".activity.LjLayout" />
+        <activity android:name=".activity.SFActivity" />
+        <activity android:name=".activity.DFActivity" />
+
+
+        <activity android:name=".activity.SerachNewsActivity" />
     </application>
 
 </manifest>

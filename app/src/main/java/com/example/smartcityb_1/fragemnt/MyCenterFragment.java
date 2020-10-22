@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.android.volley.VolleyError;
 import com.example.smartcityb_1.AppClient;
 import com.example.smartcityb_1.R;
+import com.example.smartcityb_1.activity.AppHomeActivity;
 import com.example.smartcityb_1.activity.MainActivity;
 import com.example.smartcityb_1.activity.MotifPwdActivity;
 import com.example.smartcityb_1.activity.MyInfosActivity;
@@ -50,7 +51,18 @@ public class MyCenterFragment extends Fragment {
     private LinearLayout layoutPwd;
     private LinearLayout layoutSubmit;
     private TextView tvExit;
+    public MyCenterFragment() {
+    }
 
+    public MyCenterFragment(AppHomeActivity appHomeActivity) {
+        this.appHomeActivity = appHomeActivity;
+    }
+
+    private AppHomeActivity appHomeActivity;
+
+    public static MyCenterFragment newInstance(AppHomeActivity appHomeActivity) {
+        return new MyCenterFragment(appHomeActivity);
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
